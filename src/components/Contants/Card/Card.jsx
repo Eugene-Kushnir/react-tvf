@@ -1,8 +1,15 @@
+import React from 'react';
+
 const Card = (props)=> {
+const [isLiked, setLiked] = React.useState(false);
+const onClickLike = () => {
+   setLiked(!isLiked);
+}
    return (
          <div className="card">
          <img src={props.photo} alt="pfoto" />
-         <img  className = "card_like" src="/img/like.png" alt="like" onClick={() => alert('like')} />
+         <img  className = "card_like" src={isLiked ? '/img/liked.png' : '/img/like.png'} alt="like" onClick={onClickLike} />
+         <img  className = "card_more" src="/img/search.png" alt="search" onClick={props.onClickSearch} />
          <div className="card_categories">
             <span className="card_category">{props.card_category}</span>
             <span className="card_sub_category">{props.card_sub_category}</span>
